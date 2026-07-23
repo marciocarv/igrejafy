@@ -5,9 +5,12 @@ namespace App\Models;
 use App\Enums\Gender;
 use App\Enums\PersonType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Person extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'person_type',
         'name',
@@ -15,13 +18,13 @@ class Person extends Model
         'birth_date',
         'email',
         'phone',
-        'active',
+        'is_active',
     ];
 
     protected $casts = [
         'person_type' => PersonType::class,
         'gender' => Gender::class,
         'birth_date' => 'date',
-        'active' => 'boolean',
+        'is_active' => 'boolean',
     ];
 }

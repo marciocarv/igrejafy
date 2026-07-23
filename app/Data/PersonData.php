@@ -16,7 +16,7 @@ readonly class PersonData
         public ?string $birthDate,
         public ?string $email,
         public ?string $phone,
-        public bool $active,
+        public bool $is_active,
     ) {
     }
 
@@ -32,7 +32,7 @@ readonly class PersonData
             birthDate: $validated['birth_date'] ?? null,
             email: $validated['email'] ?? null,
             phone: $validated['phone'] ?? null,
-            active: $validated['active'] ?? true,
+            is_active: $validated['is_active'] ?? true,
         );
     }
 
@@ -45,7 +45,7 @@ readonly class PersonData
             'birth_date' => $this->birthDate,
             'email' => $this->email,
             'phone' => $this->phone,
-            'active' => $this->active,
+            'is_active' => $this->is_active,
         ];
     }
 }

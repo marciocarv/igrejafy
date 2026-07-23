@@ -9,6 +9,8 @@ use App\Services\PersonService;
 use App\Data\PersonData;
 use App\Enums\Gender;
 use App\Enums\PersonType;
+use Illuminate\Http\Request;
+use App\Filters\PersonFilters;
 
 class PersonController extends Controller
 {
@@ -17,11 +19,19 @@ class PersonController extends Controller
     ) {
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $people = $this->personService->listPeople();
+        $filters = PersonFilters::fromRequest($request);
 
-        return view('people.index', compact('people'));
+        return view('people.index', [
+
+            'people' => $this->personService->listPeople($filters),
+
+            'filters' => $filters,
+
+            'personTypes' => PersonType::options(),
+
+        ]);
     }
 
     public function create()
@@ -40,7 +50,7 @@ class PersonController extends Controller
 
         return redirect()
             ->route('people.index')
-            ->with('success', 'Pessoa criada com sucesso.');
+            ->with('success', 'Pessoa cadastrada com sucesso.');
     }
 
     public function show(Person $person)
@@ -50,22 +60,24 @@ class PersonController extends Controller
 
     public function edit(Person $person)
     {
-        return view('people.edit', compact('person'));
+        return view('people.edit', [
+            'person' => $person,
+            'personTypes' => PersonType::options(),
+            'genders' => Gender::options(),
+        ]);
     }
 
-    public function update(
-    UpdatePersonRequest $request,
-    Person $person
-    ) {
-            $this->personService->update(
-                $person,
-                PersonData::fromRequest($request)
-            );
+    public function update(UpdatePersonRequest $request, Person $person)
+    {
+        $this->personService->update(
+            $person,
+            PersonData::fromRequest($request)
+        );
 
-            return redirect()
-                ->route('people.index')
-                ->with('success', 'Pessoa atualizada com sucesso.');
-        }
+        return redirect()
+            ->route('people.index')
+            ->with('success', 'Pessoa atualizada com sucesso!');
+    }
 
     public function destroy(Person $person)
     {
@@ -73,6 +85,6 @@ class PersonController extends Controller
 
         return redirect()
             ->route('people.index')
-            ->with('success', 'Pessoa excluída com sucesso.');
+            ->with('success', 'Pessoa removida com sucesso.');
     }
 }

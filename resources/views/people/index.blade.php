@@ -16,9 +16,7 @@
     </x-slot:actions>
 </x-page-header>
 
-<div class="card shadow-sm">
-
-    <div class="card-body p-0">
+        @include('people._filters')
 
         <table class="table table-hover mb-0">
 
@@ -76,7 +74,7 @@
 
                         <td>
 
-                            @if($person->active)
+                            @if($person->is_active)
 
                                 <span class="badge bg-success">
                                     Ativo
@@ -94,13 +92,15 @@
 
                         <td>
 
-                            <a href="{{ route('people.edit', $person) }}"
-                               class="btn btn-sm btn-warning">
+                            <a
+                                href="{{ route('people.edit', $person) }}"
+                                class="btn btn-sm btn-outline-primary">
 
                                 <i class="bi bi-pencil"></i>
 
-                            </a>
+                                Editar
 
+                            </a>
                             <form
                                 action="{{ route('people.destroy', $person) }}"
                                 method="POST"
@@ -110,10 +110,13 @@
                                 @method('DELETE')
 
                                 <button
-                                    class="btn btn-sm btn-danger"
-                                    onclick="return confirm('Deseja realmente excluir?')">
+                                    type="submit"
+                                    class="btn btn-sm btn-outline-danger"
+                                    onclick="return confirm('Deseja realmente excluir esta pessoa?')">
 
                                     <i class="bi bi-trash"></i>
+
+                                    Excluir
 
                                 </button>
 

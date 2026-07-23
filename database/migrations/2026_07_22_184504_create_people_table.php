@@ -18,9 +18,7 @@ return new class extends Migration
                 'member'
             ]);
 
-            $table->string('first_name', 100);
-
-            $table->string('last_name', 100);
+            $table->string('name', 200);
 
             $table->enum('gender', [
                 'male',
@@ -33,7 +31,7 @@ return new class extends Migration
 
             $table->string('phone', 30)->nullable();
 
-            $table->boolean('active')->default(true);
+            $table->boolean('is_active')->default(true);
 
             $table->timestamps();
         });

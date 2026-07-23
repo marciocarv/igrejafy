@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Person;
+use App\Filters\PersonFilters;
 use App\Repositories\Contracts\PersonRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
@@ -14,9 +15,30 @@ class PersonRepository implements PersonRepositoryInterface
         return Person::all();
     }
 
-    public function paginate(int $perPage = 15): LengthAwarePaginator
-    {
-        return Person::paginate($perPage);
+    public function paginate(
+        PersonFilters $filters,
+        int $perPage = 15
+    ): LengthAwarePaginator {
+
+        return Person::query()
+
+            ->when($filters->name, fn ($query) =>
+                $query->where('name', 'like', "%{$filters->name}%")
+            )
+
+            ->when($filters->personType, fn ($query) =>
+                $query->where('person_type', $filters->personType)
+            )
+
+            ->when(!is_null($filters->isActive), fn ($query) =>
+                $query->where('is_active', $filters->isActive)
+            )
+
+            ->orderBy('name')
+
+            ->paginate($perPage)
+
+            ->withQueryString();
     }
 
     public function findOrFail(int $id): Person
@@ -38,6 +60,6 @@ class PersonRepository implements PersonRepositoryInterface
 
     public function delete(Person $person): bool
     {
-        return $person->delete();
+        return (bool) $person->delete();
     }
 }

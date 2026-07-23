@@ -52,7 +52,7 @@ class StorePersonRequest extends FormRequest
                 'max:30',
             ],
 
-            'active' => [
+            'is_active' => [
                 'boolean',
             ],
         ];

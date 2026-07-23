@@ -66,19 +66,15 @@
         <div class="form-check">
 
             <input
-                class="form-check-input"
                 type="checkbox"
-                name="active"
-                id="active"
+                name="is_active"
+                id="is_active"
                 value="1"
-                @checked(old('active', $person->active ?? true))>
+                @checked(old('is_active', $person->is_active ?? true))
+            >
 
-            <label
-                class="form-check-label"
-                for="active">
-
+            <label for="is_active">
                 Ativo
-
             </label>
 
         </div>
