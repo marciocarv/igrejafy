@@ -1,0 +1,8 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+@import './layout.css';
+@import './sidebar.css';
+@import './navbar.css';
+@import './forms.css';
+@import './tables.css';
