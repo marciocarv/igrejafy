@@ -1,32 +1,28 @@
-<div class="col-md-2 bg-light border-end min-vh-100">
+<aside class="col-md-2 bg-light border-end min-vh-100 p-3">
 
     <div class="list-group list-group-flush">
 
-        <a href="#" class="list-group-item list-group-item-action">
-            Dashboard
+        <a
+            href="{{ route('dashboard') }}"
+            class="list-group-item list-group-item-action {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+
+            <i class="bi bi-house-door me-2"></i> Dashboard Dashboard
+
         </a>
 
-        <a href="{{ route('people.index') }}"
-           class="list-group-item list-group-item-action">
-            Pessoas
-        </a>
+        <div class="mt-4 mb-2 text-uppercase small text-muted fw-bold">
 
-        <a href="#" class="list-group-item list-group-item-action">
-            Ministérios
-        </a>
+            Cadastros
 
-        <a href="#" class="list-group-item list-group-item-action">
-            Presença
-        </a>
+        </div>
 
-        <a href="#" class="list-group-item list-group-item-action">
-            Financeiro
-        </a>
+        <a
+            href="{{ route('people.index') }}"
+            class="list-group-item list-group-item-action {{ request()->routeIs('people.*') ? 'active' : '' }}">
 
-        <a href="#" class="list-group-item list-group-item-action">
-            Relatórios
+            <i class="bi bi-people me-2"></i> Pessoas
         </a>
 
     </div>
 
-</div>
+</aside>
