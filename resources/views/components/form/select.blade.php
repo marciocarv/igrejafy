@@ -6,7 +6,7 @@
     'required' => false,
 ])
 
-<div class="mb-3">
+<div>
 
     <label for="{{ $name }}" class="form-label">
 
