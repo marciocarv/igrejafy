@@ -72,7 +72,13 @@
 
                             <td>
 
-                                {{ $person->name }}
+                                <a
+                                    href="{{ route('people.show', $person) }}"
+                                    class="text-decoration-none fw-semibold">
+
+                                    {{ $person->name }}
+
+                                </a>
 
                             </td>
 

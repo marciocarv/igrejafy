@@ -16,6 +16,14 @@ readonly class PersonData
         public ?string $birthDate,
         public ?string $email,
         public ?string $phone,
+        public ?string $zipCode,
+        public ?string $street,
+        public ?string $number,
+        public ?string $complement,
+        public ?string $neighborhood,
+        public ?string $city,
+        public ?string $state,
+
         public bool $is_active,
     ) {
     }
@@ -33,6 +41,13 @@ readonly class PersonData
             email: $validated['email'] ?? null,
             phone: $validated['phone'] ?? null,
             is_active: $validated['is_active'] ?? true,
+            zipCode: $validated['zip_code'] ?? null,
+            street: $validated['street'] ?? null,
+            number: $validated['number'] ?? null,
+            complement: $validated['complement'] ?? null,
+            neighborhood: $validated['neighborhood'] ?? null,
+            city: $validated['city'] ?? null,
+            state: $validated['state'] ?? null,
         );
     }
 
@@ -46,6 +61,13 @@ readonly class PersonData
             'email' => $this->email,
             'phone' => $this->phone,
             'is_active' => $this->is_active,
+            'zip_code' => $this->zipCode,
+            'street' => $this->street,
+            'number' => $this->number,
+            'complement' => $this->complement,
+            'neighborhood' => $this->neighborhood,
+            'city' => $this->city,
+            'state' => $this->state,
         ];
     }
 }

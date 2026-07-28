@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ReportController;
+use App\Http\Controllers\Reports\BirthdayReportController;
+use App\Http\Controllers\Reports\PersonReportController;
+use App\Http\Controllers\Reports\ReportsHomeController;
 
 Route::resource('people', PersonController::class);
 
@@ -14,10 +16,21 @@ Route::prefix('reports')
     ->name('reports.')
     ->group(function () {
 
-        Route::get('/', [ReportController::class, 'index'])
-            ->name('index');
+        Route::get(
+            '/',
+            [ReportsHomeController::class, 'index']
+        )->name('index');
 
-        Route::get('/people', [ReportController::class, 'people'])
-            ->name('people');
+        Route::get(
+            '/people',
+            [PersonReportController::class, 'index']
+        )->name('people');
+
+        Route::get(
+            '/birthdays',
+            [BirthdayReportController::class, 'index']
+        )->name('birthdays');
 
     });
+
+    Route::resource('people', PersonController::class);

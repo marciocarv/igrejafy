@@ -4,10 +4,10 @@ namespace App\Filters;
 
 use Illuminate\Http\Request;
 
-class PersonFilters
+class BirthdayReportFilters
 {
     public function __construct(
-        public readonly ?string $name = null,
+        public readonly ?int $month = null,
         public readonly ?string $personType = null,
         public readonly ?bool $isActive = true,
     ) {
@@ -16,8 +16,8 @@ class PersonFilters
     public static function fromRequest(Request $request): self
     {
         return new self(
-            name: $request->filled('name')
-                ? $request->string('name')->toString()
+            month: $request->filled('month')
+                ? (int) $request->input('month')
                 : null,
 
             personType: $request->filled('person_type')

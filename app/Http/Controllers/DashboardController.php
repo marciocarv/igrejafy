@@ -10,8 +10,6 @@ class DashboardController extends Controller
     {
         return view('dashboard.index', [
 
-            'totalPeople' => Person::count(),
-
             'totalMembers' => Person::where('person_type', 'member')->count(),
 
             'totalCongregants' => Person::where('person_type', 'congregant')->count(),

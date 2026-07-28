@@ -6,6 +6,7 @@ use App\Models\Person;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use App\Filters\PersonFilters;
+use App\Filters\BirthdayReportFilters;
 
 interface PersonRepositoryInterface
 {
@@ -23,4 +24,9 @@ interface PersonRepositoryInterface
     public function update(Person $person, array $data): Person;
 
     public function delete(Person $person): bool;
+
+    public function birthdays(
+        BirthdayReportFilters $filters,
+        int $perPage = 15
+    ): LengthAwarePaginator;
 }

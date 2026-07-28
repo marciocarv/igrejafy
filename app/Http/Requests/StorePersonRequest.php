@@ -55,6 +55,14 @@ class StorePersonRequest extends FormRequest
             'is_active' => [
                 'boolean',
             ],
+
+            'zip_code' => ['nullable', 'string', 'max:9'],
+            'street' => ['nullable', 'string', 'max:150'],
+            'number' => ['nullable', 'string', 'max:20'],
+            'complement' => ['nullable', 'string', 'max:100'],
+            'neighborhood' => ['nullable', 'string', 'max:100'],
+            'city' => ['nullable', 'string', 'max:100'],
+            'state' => ['nullable', 'string', 'size:2'],
         ];
     }
 }

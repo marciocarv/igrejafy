@@ -53,11 +53,6 @@ class PersonController extends Controller
             ->with('success', 'Pessoa cadastrada com sucesso.');
     }
 
-    public function show(Person $person)
-    {
-        return view('people.show', compact('person'));
-    }
-
     public function edit(Person $person)
     {
         return view('people.edit', [
@@ -86,5 +81,12 @@ class PersonController extends Controller
         return redirect()
             ->route('people.index')
             ->with('success', 'Pessoa removida com sucesso.');
+    }
+
+    public function show(int $id)
+    {
+        $person = $this->personService->getPerson($id);
+
+        return view('people.show', compact('person'));
     }
 }
