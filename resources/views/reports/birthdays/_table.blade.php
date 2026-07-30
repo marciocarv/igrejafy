@@ -32,18 +32,16 @@
 
                         <tr>
 
-                            <td>{{ $person->name }}</td>
-
                             <td>
-
-                                {{ $person->birth_date?->format('d/m') }}
-
+                                {{ $person->name }}
                             </td>
 
                             <td>
+                                {{ $person->birth_date->format('d/m') }}
+                            </td>
 
-                                {{ $person->birth_date?->age }}
-
+                            <td>
+                                {{ $person->birth_date->age }}
                             </td>
 
                             <td>
@@ -54,7 +52,7 @@
 
                             <td>
 
-                                {{ $person->phone }}
+                                {{ $person->phone ?: '-' }}
 
                             </td>
 
@@ -64,7 +62,9 @@
 
                         <tr>
 
-                            <td colspan="5" class="text-center py-4">
+                            <td
+                                colspan="5"
+                                class="text-center py-4">
 
                                 Nenhum aniversariante encontrado.
 
@@ -89,14 +89,12 @@
     <div class="col-md-6">
 
         <strong>
-
             Total de registros: {{ $people->total() }}
-
         </strong>
 
     </div>
 
-    <div class="col-md-6 d-flex justify-content-end">
+    <div class="col-md-6 d-flex justify-content-end no-print">
 
         {{ $people->links() }}
 

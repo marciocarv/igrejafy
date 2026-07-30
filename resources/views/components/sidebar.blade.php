@@ -1,4 +1,4 @@
-<aside class="col-md-2 bg-light border-end min-vh-100 p-3">
+<aside class="col-md-2 bg-light border-end min-vh-100 p-3 no-print">
 
     <div class="list-group list-group-flush">
 

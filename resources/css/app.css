@@ -6,3 +6,42 @@
 @import './navbar.css';
 @import './forms.css';
 @import './tables.css';
+
+.print-only {
+    display: none;
+}
+
+@media print {
+
+    .no-print {
+        display: none !important;
+    }
+
+    .print-only {
+        display: block !important;
+    }
+
+    .print-full-width {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+    }
+
+    .card-header {
+        background: transparent !important;
+    }
+
+    body {
+        background: #fff !important;
+    }
+
+    a {
+        text-decoration: none !important;
+        color: inherit !important;
+    }
+
+}

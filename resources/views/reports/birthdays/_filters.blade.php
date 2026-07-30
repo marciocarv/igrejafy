@@ -1,29 +1,29 @@
-<div class="card shadow-sm mb-4">
+<div class="card shadow-sm mb-4 no-print">
 
     <div class="card-header">
-
         <strong>Filtros</strong>
-
     </div>
 
     <div class="card-body">
 
-        <form method="GET">
+        <form
+            method="GET"
+            action="{{ route('reports.birthdays') }}">
 
             <div class="row g-3 align-items-end">
 
-                <div class="col-md-4">
+                <div class="col-lg-3">
 
                     <x-form.select
                         name="month"
                         label="Mês"
-                        :options="$months"
+                        :options="['' => 'Todos'] + $months"
                         :selected="$filters->month"
                     />
 
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-lg-3">
 
                     <x-form.select
                         name="person_type"
@@ -34,7 +34,7 @@
 
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-lg-2">
 
                     <x-form.select
                         name="is_active"
@@ -53,27 +53,34 @@
 
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-lg-4">
 
-                    <label class="form-label">Ações</label>
+                    <label class="form-label">
+                        Ações
+                    </label>
 
                     <div class="d-flex gap-2">
 
                         <button
                             type="submit"
-                            class="btn btn-primary flex-fill">
+                            class="btn btn-primary">
 
-                            Gerar
+                            <i class="bi bi-file-earmark-text me-1"></i>
+
+                            Gerar Relatório
 
                         </button>
 
-                        <a
-                            href="{{ route('reports.birthdays') }}"
-                            class="btn btn-outline-secondary">
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            onclick="window.print()">
 
-                            Limpar
+                            <i class="bi bi-printer me-1"></i>
 
-                        </a>
+                            Imprimir
+
+                        </button>
 
                     </div>
 

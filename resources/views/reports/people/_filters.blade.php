@@ -1,4 +1,4 @@
-<div class="card shadow-sm mb-4">
+<div class="card shadow-sm mb-4 no-print">
 
     <div class="card-header">
         <strong>Filtros</strong>
@@ -60,9 +60,9 @@
                         <button
                             type="button"
                             class="btn btn-outline-secondary"
-                            disabled>
+                            onclick="window.print()">
 
-                            <i class="bi bi-printer"></i>
+                            <i class="bi bi-printer me-1"></i>
 
                             Imprimir
 

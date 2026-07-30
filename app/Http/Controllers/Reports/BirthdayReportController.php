@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Reports;
 
-use App\Http\Controllers\Controller;
-use Illuminate\View\View;
+use App\Enums\PersonType;
 use App\Filters\BirthdayReportFilters;
+use App\Http\Controllers\Controller;
+use App\Services\BirthdayReportService;
 use App\Support\Months;
 use Illuminate\Http\Request;
-use App\Services\BirthdayReportService;
-use App\Enums\PersonType;
+use Illuminate\View\View;
 
 class BirthdayReportController extends Controller
 {
-
     public function __construct(
         private readonly BirthdayReportService $birthdayReportService
     ) {
     }
-    public function index(Request $request)
+
+    public function index(Request $request): View
     {
         $filters = BirthdayReportFilters::fromRequest($request);
 

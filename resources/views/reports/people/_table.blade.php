@@ -35,19 +35,38 @@
                             <td>{{ $person->name }}</td>
 
                             <td>
-                                @switch($person->person_type->label())
-                                    @case('Membro') <span class="badge bg-success"> Membro </span>
+
+                                @switch($person->person_type->value)
+
+                                    @case('member')
+
+                                        <span class="badge bg-success">
+                                            Membro
+                                        </span>
+
                                         @break
-                                    @case('Congregado') <span class="badge bg-primary"> Congregado </span>
+
+                                    @case('congregant')
+
+                                        <span class="badge bg-primary">
+                                            Congregado
+                                        </span>
+
                                         @break
+
                                     @default
-                                     <span class="badge bg-warning text-dark"> Visitante </span>
+
+                                        <span class="badge bg-warning text-dark">
+                                            Visitante
+                                        </span>
+
                                 @endswitch
+
                             </td>
 
-                            <td>{{ $person->phone }}</td>
+                            <td>{{ $person->phone ?: '-' }}</td>
 
-                            <td>{{ $person->email }}</td>
+                            <td>{{ $person->email ?: '-' }}</td>
 
                             <td>
 
@@ -73,7 +92,9 @@
 
                         <tr>
 
-                            <td colspan="5" class="text-center py-4">
+                            <td
+                                colspan="5"
+                                class="text-center py-4">
 
                                 Nenhum registro encontrado.
 
@@ -96,13 +117,17 @@
 <div class="row mt-3 align-items-center">
 
     <div class="col-md-6">
+
         <strong>
             Total de registros: {{ $people->total() }}
         </strong>
+
     </div>
 
-    <div class="col-md-6 d-flex justify-content-end">
+    <div class="col-md-6 d-flex justify-content-end no-print">
+
         {{ $people->links() }}
+
     </div>
 
 </div>

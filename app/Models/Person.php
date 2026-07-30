@@ -39,4 +39,9 @@ class Person extends Model
         'birth_date' => 'date',
         'is_active' => 'boolean',
     ];
+
+    public function baptism()
+    {
+        return $this->hasOne(Baptism::class);
+    }
 }

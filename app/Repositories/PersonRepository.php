@@ -73,17 +73,25 @@ class PersonRepository implements PersonRepositoryInterface
 
         return Person::query()
 
-            ->when($filters->month, function ($query) use ($filters) {
-                $query->whereMonth('birth_date', $filters->month);
-            })
+            ->when(
+                $filters->month,
+                fn ($query) =>
+                    $query->whereMonth('birth_date', $filters->month)
+            )
 
-            ->when($filters->personType, function ($query) use ($filters) {
-                $query->where('person_type', $filters->personType);
-            })
+            ->when(
+                $filters->personType,
+                fn ($query) =>
+                    $query->where('person_type', $filters->personType)
+            )
 
-            ->when(! is_null($filters->isActive), function ($query) use ($filters) {
-                $query->where('is_active', $filters->isActive);
-            })
+            ->when(
+                !is_null($filters->isActive),
+                fn ($query) =>
+                    $query->where('is_active', $filters->isActive)
+            )
+
+            ->whereNotNull('birth_date')
 
             ->orderByRaw('MONTH(birth_date), DAY(birth_date)')
 

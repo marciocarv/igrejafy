@@ -10,9 +10,11 @@
 
 </h1>
 
-<p class="text-muted mb-4">
+<p class="text-muted mb-4 no-print">
     Gere uma listagem do cadastro de pessoas utilizando os filtros abaixo.
 </p>
+
+@include('reports.people._header')
 
 @include('reports.people._filters')
 

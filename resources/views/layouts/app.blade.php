@@ -23,7 +23,7 @@
 
                 @include('components.sidebar')
 
-                <main class="col-md-10 p-4">
+                <main class="col-md-10 p-4 print-full-width">
 
                     @include('components.alerts')
 
