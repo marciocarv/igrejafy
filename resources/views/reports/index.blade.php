@@ -30,6 +30,26 @@
 
     </a>
 
+    <a
+        href="{{ route('reports.visits') }}"
+        class="list-group-item list-group-item-action">
+
+        <i class="bi bi-calendar-check me-2"></i>
+
+        Visitas
+
+    </a>
+
+    <a
+        href="{{ route('reports.returning-visitors') }}"
+        class="list-group-item list-group-item-action">
+
+        <i class="bi bi-arrow-repeat me-2"></i>
+
+        Visitantes que Retornaram
+
+    </a>
+
 </div>
 
 @endsection

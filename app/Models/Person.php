@@ -7,6 +7,7 @@ use App\Enums\PersonType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Visit;
 
 class Person extends Model
 {
@@ -43,5 +44,10 @@ class Person extends Model
     public function baptism()
     {
         return $this->hasOne(Baptism::class);
+    }
+
+    public function visits()
+    {
+        return $this->hasMany(Visit::class);
     }
 }

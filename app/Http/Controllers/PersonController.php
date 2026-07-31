@@ -11,6 +11,7 @@ use App\Enums\Gender;
 use App\Enums\PersonType;
 use Illuminate\Http\Request;
 use App\Filters\PersonFilters;
+use Illuminate\View\View;
 
 class PersonController extends Controller
 {
@@ -83,10 +84,20 @@ class PersonController extends Controller
             ->with('success', 'Pessoa removida com sucesso.');
     }
 
-    public function show(int $id)
+    public function show(Person $person): View
     {
-        $person = $this->personService->getPerson($id);
+        $person->load('baptism');
 
-        return view('people.show', compact('person'));
+        $person->loadCount('visits');
+
+        $person->load([
+            'visits' => fn ($query) => $query
+                ->latest('visit_date')
+                ->limit(1),
+        ]);
+
+        return view('people.show', [
+            'person' => $person,
+        ]);
     }
 }

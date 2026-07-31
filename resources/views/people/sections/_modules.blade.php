@@ -168,15 +168,65 @@
         @endif
 
         {{-- Visitas --}}
-        <a
-            href="#"
-            class="list-group-item list-group-item-action">
+        <div class="list-group-item">
 
-            <i class="bi bi-calendar-check me-2"></i>
+            <div class="d-flex justify-content-between align-items-center">
 
-            Visitas
+                <a
+                    href="{{ route('people.visits.index', $person) }}"
+                    class="text-decoration-none text-dark flex-grow-1">
 
-        </a>
+                    <i class="bi bi-calendar-check me-2"></i>
+
+                    <span>Visitas</span>
+
+                </a>
+
+                <div class="text-end ms-3">
+
+                    @if($person->visits_count > 0)
+
+                        <span class="text-success small d-block">
+
+                            {{ $person->visits_count }}
+
+                            {{ $person->visits_count === 1 ? 'visita' : 'visitas' }}
+
+                        </span>
+
+                        <small class="text-muted d-block">
+
+                            Última:
+
+                            {{ $person->visits->first()?->visit_date->format('d/m/Y') }}
+
+                        </small>
+
+                    @else
+
+                        <span class="text-muted small d-block">
+
+                            Nenhuma visita
+
+                        </span>
+
+                    @endif
+
+                    <a
+                        href="{{ route('people.visits.create', $person) }}"
+                        class="btn btn-sm btn-outline-primary mt-2">
+
+                        <i class="bi bi-plus-lg me-1"></i>
+
+                        Registrar Visita
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
 
         {{-- Histórico --}}
         <a

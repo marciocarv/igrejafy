@@ -7,6 +7,9 @@ use App\Http\Controllers\Reports\BirthdayReportController;
 use App\Http\Controllers\Reports\PersonReportController;
 use App\Http\Controllers\Reports\ReportsHomeController;
 use App\Http\Controllers\BaptismController;
+use App\Http\Controllers\VisitController;
+use App\Http\Controllers\Reports\VisitReportController;
+use App\Http\Controllers\Reports\ReturningVisitorsReportController;
 
 Route::get('/', DashboardController::class)
     ->name('dashboard');
@@ -30,6 +33,16 @@ Route::prefix('reports')
             [BirthdayReportController::class, 'index']
         )->name('birthdays');
 
+        Route::get(
+            '/visits',
+            [VisitReportController::class, 'index']
+        )->name('visits');
+
+        Route::get(
+            '/returning-visitors',
+            [ReturningVisitorsReportController::class, 'index']
+        )->name('returning-visitors');
+
     });
 
     Route::resource('people', PersonController::class);
@@ -49,4 +62,21 @@ Route::prefix('reports')
 
         Route::get('/certificate', [BaptismController::class, 'certificate'])
             ->name('certificate');
+    });
+
+    Route::prefix('people/{person}/visits')
+    ->name('people.visits.')
+    ->group(function () {
+
+        Route::get('/', [VisitController::class, 'index'])
+            ->name('index');
+
+        Route::get('/create', [VisitController::class, 'create'])
+            ->name('create');
+
+        Route::post('/', [VisitController::class, 'store'])
+            ->name('store');
+
+        Route::delete('/{visit}', [VisitController::class, 'destroy'])
+            ->name('destroy');
     });
