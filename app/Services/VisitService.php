@@ -11,6 +11,7 @@ use App\Data\VisitSummaryData;
 use App\Filters\VisitReportFilters;
 use App\Data\VisitReportSummaryData;
 use App\Filters\ReturningVisitorsReportFilters;
+use App\Filters\NonReturningVisitorsReportFilters;
 
 class VisitService
 {
@@ -61,4 +62,11 @@ class VisitService
     ): LengthAwarePaginator {
         return $this->visitRepository->returningVisitorsReport($filters);
     }
+
+    public function nonReturningVisitorsReport(
+        NonReturningVisitorsReportFilters $filters
+    ): LengthAwarePaginator {
+        return $this->visitRepository->nonReturningVisitorsReport($filters);
+    }
+
 }

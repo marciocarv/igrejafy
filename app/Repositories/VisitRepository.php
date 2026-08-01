@@ -10,6 +10,7 @@ use App\Data\VisitSummaryData;
 use App\Filters\VisitReportFilters;
 use App\Data\VisitReportSummaryData;
 use App\Filters\ReturningVisitorsReportFilters;
+use App\Filters\NonReturningVisitorsReportFilters;
 
 
 class VisitRepository implements VisitRepositoryInterface
@@ -234,6 +235,73 @@ class VisitRepository implements VisitRepositoryInterface
             ->havingRaw('COUNT(visits.id) > 1')
 
             ->orderByDesc('visits_count')
+            ->orderBy('people.name')
+
+            ->paginate($perPage)
+
+            ->withQueryString();
+    }
+
+    public function nonReturningVisitorsReport(
+        NonReturningVisitorsReportFilters $filters,
+        int $perPage = 15
+    ): LengthAwarePaginator {
+        return Visit::query()
+            ->join('people', 'people.id', '=', 'visits.person_id')
+
+            ->where('people.person_type', 'visitor')
+
+            ->when(
+                $filters->startDate,
+                fn ($query) =>
+                    $query->whereDate(
+                        'visits.visit_date',
+                        '>=',
+                        $filters->startDate
+                    )
+            )
+
+            ->when(
+                $filters->endDate,
+                fn ($query) =>
+                    $query->whereDate(
+                        'visits.visit_date',
+                        '<=',
+                        $filters->endDate
+                    )
+            )
+
+            ->when(
+                ! is_null($filters->isActive),
+                fn ($query) =>
+                    $query->where(
+                        'people.is_active',
+                        $filters->isActive
+                    )
+            )
+
+            ->whereNull('people.deleted_at')
+            ->whereNull('visits.deleted_at')
+
+            ->select([
+                'people.id',
+                'people.name',
+                'people.phone',
+            ])
+
+            ->selectRaw('MIN(visits.visit_date) as first_visit')
+            ->selectRaw('MAX(visits.visit_date) as last_visit')
+            ->selectRaw('COUNT(visits.id) as visits_count')
+
+            ->groupBy(
+                'people.id',
+                'people.name',
+                'people.phone'
+            )
+
+            ->havingRaw('COUNT(visits.id) = 1')
+
+            ->orderBy('first_visit')
             ->orderBy('people.name')
 
             ->paginate($perPage)

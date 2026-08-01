@@ -50,6 +50,16 @@
 
     </a>
 
+    <a
+        href="{{ route('reports.non-returning-visitors') }}"
+        class="list-group-item list-group-item-action">
+
+        <i class="bi bi-person-x me-2"></i>
+
+        Visitantes sem Retorno
+
+    </a>
+
 </div>
 
 @endsection

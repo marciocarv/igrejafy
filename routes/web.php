@@ -10,6 +10,7 @@ use App\Http\Controllers\BaptismController;
 use App\Http\Controllers\VisitController;
 use App\Http\Controllers\Reports\VisitReportController;
 use App\Http\Controllers\Reports\ReturningVisitorsReportController;
+use App\Http\Controllers\Reports\NonReturningVisitorsReportController;
 
 Route::get('/', DashboardController::class)
     ->name('dashboard');
@@ -42,6 +43,11 @@ Route::prefix('reports')
             '/returning-visitors',
             [ReturningVisitorsReportController::class, 'index']
         )->name('returning-visitors');
+
+        Route::get(
+            '/non-returning-visitors',
+            [NonReturningVisitorsReportController::class, 'index']
+        )->name('non-returning-visitors');
 
     });
 

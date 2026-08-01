@@ -9,6 +9,7 @@ use App\Data\VisitSummaryData;
 use App\Filters\VisitReportFilters;
 use App\Data\VisitReportSummaryData;
 use App\Filters\ReturningVisitorsReportFilters;
+use App\Filters\NonReturningVisitorsReportFilters;
 
 interface VisitRepositoryInterface
 {
@@ -32,6 +33,11 @@ interface VisitRepositoryInterface
 
     public function returningVisitorsReport(
         ReturningVisitorsReportFilters $filters,
+        int $perPage = 15
+    ): LengthAwarePaginator;
+
+    public function nonReturningVisitorsReport(
+        NonReturningVisitorsReportFilters $filters,
         int $perPage = 15
     ): LengthAwarePaginator;
 
