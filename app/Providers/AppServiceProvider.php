@@ -10,6 +10,8 @@ use App\Repositories\BaptismRepository;
 use App\Repositories\Contracts\BaptismRepositoryInterface;
 use App\Repositories\VisitRepository;
 use App\Repositories\Contracts\VisitRepositoryInterface;
+use App\Repositories\Contracts\DashboardRepositoryInterface;
+use App\Repositories\DashboardRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,10 +31,16 @@ class AppServiceProvider extends ServiceProvider
             VisitRepositoryInterface::class,
             VisitRepository::class
         );
+
+        $this->app->bind(
+            DashboardRepositoryInterface::class,
+            DashboardRepository::class
+        );
     }
 
     public function boot(): void
     {
         Paginator::useBootstrapFive();
+        \Carbon\Carbon::setLocale('pt_BR');
     }
 }

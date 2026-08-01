@@ -1,21 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Person;
 
+use App\Services\DashboardService;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function __invoke()
+    public function __construct(
+        private readonly DashboardService $dashboardService
+    ) {
+    }
+
+    public function index(): View
     {
         return view('dashboard.index', [
-
-            'totalMembers' => Person::where('person_type', 'member')->count(),
-
-            'totalCongregants' => Person::where('person_type', 'congregant')->count(),
-
-            'totalVisitors' => Person::where('person_type', 'visitor')->count(),
-
+            'dashboard' => $this->dashboardService->getDashboard(),
         ]);
     }
 }

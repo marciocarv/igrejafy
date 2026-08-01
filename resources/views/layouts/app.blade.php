@@ -35,6 +35,21 @@
 
         </div>
 
+        <footer class="border-top mt-5 py-3">
+
+            <div class="container text-center text-muted">
+
+                IMIDE v1.0
+
+                |
+
+                © {{ now()->year }}
+
+                Igreja Missionária IDE
+
+            </div>
+
+        </footer>
     </body>
 
 </html>

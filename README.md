@@ -1,58 +1,354 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# IMIDE
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**IMIDE (Igreja Missionária IDE)** is a church management system developed with **Laravel 13**, designed to simplify member registration, visitor follow-up, baptisms, reports, and church administration.
 
-## About Laravel
+The project follows a clean architecture (Controller → Service → Repository → Model) to ensure maintainability, scalability, and readability.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Dashboard
 
-## Learning Laravel
+- Church statistics
+- Total people
+- Members
+- Congregants
+- Visitors
+- Baptisms
+- Visits this month
+- Upcoming birthdays
+- Returning visitors
+- Recent activity
+- Quick actions
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## People
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- Register people
+- Edit people
+- View profile
+- Soft delete
+- Dynamic person types:
+  - Visitor
+  - Congregant
+  - Member
 
-## Agentic Development
+Profile includes:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+- Personal information
+- Contact information
+- Address
+- Baptism information
+- Visit history
 
-```bash
-composer require laravel/boost --dev
+---
 
-php artisan boost:install
+## Baptism Module
+
+- Register baptism
+- Edit baptism
+- Baptism certificate
+- Landscape print layout
+
+---
+
+## Visits Module
+
+- Register visits
+- Visit history
+- Last visit
+- Number of visits
+- Visitor follow-up
+
+---
+
+## Reports
+
+### People
+
+- Filter by person type
+- Filter by active/inactive
+- Print
+
+### Birthdays
+
+- Monthly birthdays
+- Print
+
+### Visits
+
+- Date filters
+- Summary cards
+- Print
+
+### Returning Visitors
+
+- Visitors who returned
+- Date filters
+- Print
+
+---
+
+# Technology Stack
+
+- PHP 8.3+
+- Laravel 13
+- MySQL / MariaDB
+- Bootstrap 5
+- Bootstrap Icons
+
+---
+
+# Architecture
+
+The project follows the architecture:
+
+```
+Controller
+    ↓
+Service
+    ↓
+Repository
+    ↓
+Model
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Controller
 
-## Contributing
+Responsible only for handling requests and responses.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Service
 
-## Code of Conduct
+Contains business rules.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Repository
 
-## Security Vulnerabilities
+Responsible only for database persistence.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Model
 
-## License
+Represents the database entities.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+# Project Structure
+
+```
+app/
+
+    Data/
+
+    Enums/
+
+    Filters/
+
+    Http/
+
+    Models/
+
+    Repositories/
+
+    Services/
+
+resources/
+
+    views/
+
+        dashboard/
+
+        people/
+
+        reports/
+
+        layouts/
+
+routes/
+
+database/
+```
+
+Views follow a modular structure.
+
+Example:
+
+```
+people/
+
+    index.blade.php
+
+    create.blade.php
+
+    edit.blade.php
+
+    show.blade.php
+
+    _form.blade.php
+
+    _filters.blade.php
+
+    _table.blade.php
+
+    sections/
+
+        _personal.blade.php
+
+        _contact.blade.php
+
+        _address.blade.php
+
+        _baptism.blade.php
+
+        _visits.blade.php
+```
+
+---
+
+# Installation
+
+Clone the repository.
+
+```bash
+git clone https://github.com/your-user/imide.git
+```
+
+Install dependencies.
+
+```bash
+composer install
+```
+
+Copy the environment file.
+
+```bash
+cp .env.example .env
+```
+
+Generate the application key.
+
+```bash
+php artisan key:generate
+```
+
+Configure your database in `.env`.
+
+Run the migrations.
+
+```bash
+php artisan migrate
+```
+
+(Optional) Seed sample data.
+
+```bash
+php artisan db:seed
+```
+
+Start the local server.
+
+```bash
+php artisan serve
+```
+
+Open:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# Database
+
+Main tables:
+
+```
+people
+
+baptisms
+
+visits
+```
+
+All tables follow Laravel conventions:
+
+- id
+- timestamps
+- soft deletes
+
+---
+
+# Coding Standards
+
+The project follows the internal IMIDE Coding Standards.
+
+Highlights:
+
+- Thin Controllers
+- Business rules in Services
+- Database access through Repositories
+- Bootstrap only
+- Blade templates only
+- One responsibility per class
+- Readability over clever code
+
+---
+
+# Current Modules
+
+- ✅ Dashboard
+- ✅ People
+- ✅ Baptism
+- ✅ Visits
+- ✅ People Reports
+- ✅ Birthday Reports
+- ✅ Visit Reports
+- ✅ Returning Visitors Reports
+
+---
+
+# Roadmap
+
+Future modules planned:
+
+- Ministries
+- Ministry Members
+- Worship Services
+- Attendance
+- Classes / Discipleship
+- Marriage
+- Child Dedication
+- Death Records
+- Financial Management
+- User Authentication & Roles
+- PDF Reports
+- Dashboard Analytics
+
+---
+
+# Screenshots
+
+Future documentation will include screenshots of:
+
+- Dashboard
+- People Profile
+- Baptism Module
+- Visits Module
+- Reports
+
+---
+
+# License
+
+This project was developed exclusively for **Igreja Missionária IDE**.
+
+All rights reserved.
+
+---
+
+# Author
+
+Developed with ❤️ using Laravel.
+
+**IMIDE – Igreja Missionária IDE**

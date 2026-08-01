@@ -12,7 +12,7 @@ use App\Http\Controllers\Reports\VisitReportController;
 use App\Http\Controllers\Reports\ReturningVisitorsReportController;
 use App\Http\Controllers\Reports\NonReturningVisitorsReportController;
 
-Route::get('/', DashboardController::class)
+Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 Route::prefix('reports')

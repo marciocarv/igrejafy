@@ -69,7 +69,23 @@
                                 colspan="3"
                                 class="text-center py-4">
 
-                                Nenhum visitante sem retorno foi encontrado.
+                                <div class="text-center py-5">
+
+                                    <i class="bi bi-inbox display-4 text-secondary"></i>
+
+                                    <h5 class="mt-3">
+
+                                        Nenhum registro encontrado
+
+                                    </h5>
+
+                                    <p class="text-muted mb-0">
+
+                                        Ajuste os filtros ou realize um novo cadastro.
+
+                                    </p>
+
+                                </div>
 
                             </td>
 
