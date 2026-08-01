@@ -92,29 +92,21 @@ php artisan optimize
 
 Instead of opening a terminal every time, create a Windows batch file.
 
-Start IMIDE.bat
+# .bat file
 
 @echo off
+title IMIDE - Igreja Missionaria IDE
 
-cd C:\IMIDE
+cd /d "%~dp0"
 
-php artisan serve --host=127.0.0.1 --port=8000
+echo Starting IMIDE...
+start /min cmd /c "php artisan serve --host=127.0.0.1 --port=8000"
 
-pause
-
-Double-click it.
-
-Laravel starts.
-
-Shortcut
-
-Create another file.
-
-Open IMIDE.bat
-
-@echo off
+timeout /t 5 /nobreak > nul
 
 start http://127.0.0.1:8000
+
+exit
 
 The pastor clicks:
 
