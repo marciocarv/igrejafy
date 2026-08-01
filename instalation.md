@@ -73,6 +73,12 @@ php artisan migrate
 # Link the storage folder (if you use uploaded files now or in the future)
 php artisan storage:link
 
+# instal the vite dependencies
+npm install
+
+# create a folder public/build and generate the manifest.json file
+npm run build
+
 # Clear old caches
 php artisan optimize:clear
 
