@@ -61,6 +61,29 @@ php artisan route:cache
 php artisan view:cache
 Starting the system
 
+# Install PHP dependencies (if needed)
+composer install --no-dev --optimize-autoloader
+
+# Generate APP_KEY (only if this is a fresh installation)
+php artisan key:generate
+
+# Run database migrations (only if the database is empty)
+php artisan migrate
+
+# Link the storage folder (if you use uploaded files now or in the future)
+php artisan storage:link
+
+# Clear old caches
+php artisan optimize:clear
+
+# Create production caches
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# Optimize the framework
+php artisan optimize
+
 Instead of opening a terminal every time, create a Windows batch file.
 
 Start IMIDE.bat
