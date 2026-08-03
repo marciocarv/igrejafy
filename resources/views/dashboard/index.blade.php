@@ -9,7 +9,7 @@
     <div>
 
         <h2 class="fw-bold mb-1">
-            Bem-vindo ao IMIDE
+            Bem-vindo ao IgrejaFy
         </h2>
 
         <p class="text-muted mb-0">

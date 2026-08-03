@@ -39,13 +39,13 @@
 
             <div class="container text-center text-muted">
 
-                IMIDE v1.0
+                IgrejaFy - Sistema de Gestão Eclesiástica
 
                 |
 
                 © {{ now()->year }}
 
-                Igreja Missionária IDE
+
 
             </div>
 

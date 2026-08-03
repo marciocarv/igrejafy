@@ -1,6 +1,6 @@
-# IMIDE
+# IGREJAFY
 
-**IMIDE (Igreja Missionária IDE)** is a church management system developed with **Laravel 13**, designed to simplify member registration, visitor follow-up, baptisms, reports, and church administration.
+**IgrejaFy** is a church management system developed with **Laravel 13**, designed to simplify member registration, visitor follow-up, baptisms, reports, and church administration.
 
 The project follows a clean architecture (Controller → Service → Repository → Model) to ensure maintainability, scalability, and readability.
 
@@ -210,7 +210,7 @@ people/
 Clone the repository.
 
 ```bash
-git clone https://github.com/your-user/imide.git
+git clone https://github.com/your-user/igrejafy.git
 ```
 
 Install dependencies.
@@ -281,7 +281,7 @@ All tables follow Laravel conventions:
 
 # Coding Standards
 
-The project follows the internal IMIDE Coding Standards.
+The project follows the internal IGREJAFY Coding Standards.
 
 Highlights:
 
@@ -341,7 +341,7 @@ Future documentation will include screenshots of:
 
 # License
 
-This project was developed exclusively for **Igreja Missionária IDE**.
+This project was developed exclusively for **IgreaFy**.
 
 All rights reserved.
 
@@ -351,4 +351,4 @@ All rights reserved.
 
 Developed with ❤️ using Laravel.
 
-**IMIDE – Igreja Missionária IDE**
+**IGREJAFY**
