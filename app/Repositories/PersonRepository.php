@@ -51,6 +51,7 @@ class PersonRepository implements PersonRepositoryInterface
 
     public function create(array $data): Person
     {
+        $data['tenant_id'] = auth()->user()->tenant_id;
         return Person::create($data);
     }
 

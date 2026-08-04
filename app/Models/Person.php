@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Visit;
+use App\Models\Tenant;
 
 class Person extends Model
 {
@@ -50,4 +51,11 @@ class Person extends Model
     {
         return $this->hasMany(Visit::class);
     }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
+
 }

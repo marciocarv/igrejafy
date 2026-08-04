@@ -57,4 +57,14 @@ class Tenant extends Model
 
         'is_active' => 'boolean',
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function people()
+    {
+        return $this->hasMany(Person::class);
+    }
 }

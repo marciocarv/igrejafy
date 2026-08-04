@@ -13,6 +13,8 @@ class PersonFactory extends Factory
     {
         return [
 
+            'tenant_id' => 1,
+
             'name' => fake()->name(),
 
             'person_type' => fake()->randomElement([
