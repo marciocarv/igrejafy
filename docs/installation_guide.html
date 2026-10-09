@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IgrejaFy - Installation & Environment Setup Guide</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 15mm 15mm 15mm 15mm;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.5;
+      font-size: 13px;
+      background: #ffffff;
+      padding: 0;
+    }
+
+    .header {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 16px;
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-title h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+
+    .header-title p {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .header-badge {
+      text-align: right;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-date {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    .step-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      page-break-inside: avoid;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .step-number {
+      width: 24px;
+      height: 24px;
+      background: #2563eb;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    p {
+      margin-bottom: 8px;
+      color: #334155;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 10px;
+      color: #334155;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 11.5px;
+      line-height: 1.45;
+      overflow-x: auto;
+      margin: 8px 0;
+    }
+
+    code {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 11.5px;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+
+    .alert-box {
+      border-left: 4px solid #f59e0b;
+      background: #fffbeb;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      margin: 10px 0;
+      page-break-inside: avoid;
+    }
+
+    .alert-box.alert-tip {
+      border-left-color: #10b981;
+      background: #f0fdf4;
+    }
+
+    .alert-box h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #b45309;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .alert-box.alert-tip h4 {
+      color: #047857;
+    }
+
+    .alert-box p {
+      margin-bottom: 0;
+      font-size: 12px;
+      color: #78350f;
+    }
+
+    .alert-box.alert-tip p {
+      color: #065f46;
+    }
+
+    .quick-ref {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-top: 18px;
+      page-break-inside: avoid;
+    }
+
+    .quick-ref h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 11px;
+      color: #94a3b8;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-title">
+      <h1>IgrejaFy — Setup & Installation Guide</h1>
+      <p>Clean setup and deployment documentation for new Windows machines</p>
+    </div>
+    <div class="header-badge">
+      <span class="badge">Production Ready</span>
+      <div class="meta-date">Updated: October 2026</div>
+    </div>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-number">1</div>
+      <div class="step-title">Configure PHP Extensions (php.ini)</div>
+    </div>
+    <p>On a fresh Windows PHP installation (e.g., <code>C:\php\php.ini</code>), several required extensions are disabled by default. Remove the leading semicolon (<code>;</code>) from these directives:</p>
+    <pre><code>extension_dir = "ext"
+extension=fileinfo
+extension=pdo_mysql
+extension=mysqli
+extension=zip</code></pre>
+    <ul>
+      <li><strong>fileinfo:</strong> Mandatory for Composer packages such as <code>league/flysystem</code>.</li>
+      <li><strong>pdo_mysql & mysqli:</strong> Required for Laravel database connection to MySQL.</li>
+      <li><strong>zip:</strong> Allows Composer to quickly extract vendor zip packages.</li>
+    </ul>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-number">2</div>
+      <div class="step-title">Install PHP Dependencies</div>
+    </div>
+    <p>Open PowerShell or Command Prompt in the project folder and download the vendor packages:</p>
+    <pre><code># For local development:
+composer install
+
+# For production deployments:
+composer install --no-dev --optimize-autoloader</code></pre>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-number">3</div>
+      <div class="step-title">Database Setup & .env Configuration</div>
+    </div>
+    <p><strong>A. Create the MySQL Database:</strong></p>
+    <pre><code>CREATE DATABASE IF NOT EXISTS igrejafy CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></pre>
+    <p><strong>B. Configure credentials in <code>.env</code>:</strong></p>
+    <pre><code>DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=igrejafy
+DB_USERNAME=root
+DB_PASSWORD="your_password"</code></pre>
+    <div class="alert-box">
+      <h4>Crucial Gotcha — Passwords with '#'</h4>
+      <p>If your database password contains special characters (especially <code>#</code>), you <strong>MUST wrap it in quotes</strong> (e.g. <code>DB_PASSWORD="Gguihelo1990#"</code>). Without quotes, phpdotenv treats <code>#</code> as an inline comment and clips your password, causing <code>Access denied for user 'root'@'localhost' (1045)</code>.</p>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-number">4</div>
+      <div class="step-title">Generate Application Key & Run Migrations</div>
+    </div>
+    <p>Initialize Laravel's cryptographic key and create all database tables:</p>
+    <pre><code># 1. Generate key
+php artisan key:generate
+
+# 2. Run migrations
+php artisan migrate</code></pre>
+    <p>All database tables (users, cache, jobs, people, baptisms, visits, etc.) will be created.</p>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-number">5</div>
+      <div class="step-title">Frontend Dependencies & Asset Compilation</div>
+    </div>
+    <p>To prevent the error <code>'vite' is not recognized as an internal or external command</code>, install Node packages:</p>
+    <pre><code># 1. Install frontend packages (Vite, Tailwind, Bootstrap, etc.)
+npm install
+
+# 2. Build assets for production (generates public/build/manifest.json)
+npm run build</code></pre>
+    <div class="alert-box alert-tip">
+      <h4>Production Tip</h4>
+      <p>Once <code>npm run build</code> is executed, the compiled CSS and JS are saved in <code>public/build</code>. You do <strong>not</strong> need to keep <code>npm run dev</code> running in production.</p>
+    </div>
+  </div>
+
+  <!-- Step 6 -->
+  <div class="quick-ref">
+    <h3>Quick Checklist for Future Machine Installations</h3>
+    <pre><code># 1. PHP setup: Enable fileinfo, pdo_mysql, mysqli, zip in C:\php\php.ini
+# 2. Install dependencies:
+composer install
+# 3. Environment: Copy .env.example to .env (if fresh clone) and configure DB
+# 4. MySQL: CREATE DATABASE igrejafy;
+# 5. Initialize application:
+php artisan key:generate
+php artisan migrate
+npm install
+npm run build
+# 6. Run server:
+php artisan serve</code></pre>
+  </div>
+
+  <div class="footer">
+    IgrejaFy &copy; 2026 &mdash; Automated Installation &amp; Deployment Documentation
+  </div>
+
+</body>
+</html>
